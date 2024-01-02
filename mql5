@@ -1,0 +1,61 @@
+mql5
+//+------------------------------------------------------------------+
+//|                                                       PeakBottom EA |
+//|                                   Developed by Forex Robot Easy Team |
+//|                                                     forexroboteasy.com |
+//+------------------------------------------------------------------+
+
+// Global variables
+double previousPeak = 0.0; // Variable to store the previous peak value
+double previousBottom = 0.0; // Variable to store the previous bottom value
+
+//+------------------------------------------------------------------+
+//| Expert initialization function                                     |
+//+------------------------------------------------------------------+
+int OnInit()
+{
+    // Initialize the necessary indicators and variables here
+    return(INIT_SUCCEEDED);
+}
+
+//+------------------------------------------------------------------+
+//| Expert deinitialization function                                   |
+//+------------------------------------------------------------------+
+void OnDeinit(const int reason)
+{
+    // Perform any necessary cleanup and deinitialization here
+}
+
+//+------------------------------------------------------------------+
+//| Expert tick function                                              |
+//+------------------------------------------------------------------+
+void OnTick()
+{
+    // Get the current market price
+    double currentPrice = MarketInfo(Symbol(), MODE_BID);
+
+    // Check if the current price is a new peak or bottom
+    if (currentPrice > previousPeak)
+    {
+        // Current price is a new peak, implement peak strategy here
+        // ...
+
+        // Update the previous peak value
+        previousPeak = currentPrice;
+    }
+    else if (currentPrice < previousBottom)
+    {
+        // Current price is a new bottom, implement bottom strategy here
+        // ...
+
+        // Update the previous bottom value
+        previousBottom = currentPrice;
+    }
+    else
+    {
+        // No new peak or bottom, do nothing
+    }
+
+    // Add your trading logic here based on the peak and bottom strategies
+    // ...
+} 
